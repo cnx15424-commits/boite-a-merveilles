@@ -1,0 +1,2942 @@
+/* =========================================================
+   LA BOÎTE À MERVEILLES — LIEUX PAGE
+   Cinematic / Editorial / Gold
+   Responsive
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.lieux-page,
+.lieux-page * {
+  box-sizing: border-box;
+}
+
+.lieux-page {
+  --bg: #0b0a08;
+  --bg-soft: #11100d;
+  --bg-card: #15130f;
+  --bg-light: #1a1712;
+
+  --gold: #c9a86a;
+  --gold-light: #e7cc91;
+  --gold-dark: #7d6030;
+
+  --text: #f0eadf;
+  --text-soft: #c4b9a8;
+  --text-muted: #8c8273;
+
+  --border: rgba(201, 168, 106, 0.24);
+  --border-strong: rgba(201, 168, 106, 0.5);
+
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(201, 168, 106, 0.07), transparent 28%),
+    radial-gradient(circle at 85% 30%, rgba(201, 168, 106, 0.045), transparent 30%),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family: "DM Sans", sans-serif;
+}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.lieux-page::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.lieux-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lieux-page button,
+.lieux-page input,
+.lieux-page textarea,
+.lieux-page select {
+  font: inherit;
+}
+
+.lieux-page h1,
+.lieux-page h2,
+.lieux-page h3,
+.lieux-page p {
+  margin: 0;
+}
+
+.lieux-page img {
+  max-width: 100%;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.lieux-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.gold-orb {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  background: var(--gold);
+}
+
+.orb-one {
+  top: -220px;
+  left: -160px;
+}
+
+.orb-two {
+  right: -220px;
+  top: 38%;
+}
+
+.gold-line {
+  position: absolute;
+  width: 1px;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(201, 168, 106, 0.12),
+    transparent
+  );
+}
+
+.line-one {
+  left: 8%;
+}
+
+.line-two {
+  right: 8%;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.lieux-nav {
+  position: relative;
+  z-index: 20;
+
+  width: min(1400px, calc(100% - 70px));
+  margin: 0 auto;
+
+  min-height: 86px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+/* LOGO */
+
+.lieux-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: max-content;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: 0.01em;
+}
+
+.lieux-logo .logo-mark {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--border-strong);
+
+  color: var(--gold);
+
+  font-family: Georgia, serif;
+  font-size: 23px;
+
+  transform: rotate(45deg);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.lieux-logo:hover .logo-mark {
+  background: var(--gold);
+  color: var(--bg);
+  transform: rotate(225deg);
+}
+
+.lieux-logo > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.lieux-logo > span:last-child > span {
+  color: var(--gold-light);
+}
+
+.lieux-logo small {
+  margin-top: 7px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: var(--text-muted);
+}
+
+/* LINKS */
+
+.lieux-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.lieux-links a {
+  position: relative;
+
+  padding: 11px 10px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.lieux-links a::after {
+  content: "";
+
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 3px;
+
+  height: 1px;
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  background: var(--gold);
+
+  transition: transform 0.25s ease;
+}
+
+.lieux-links a:hover,
+.lieux-links a.active {
+  color: var(--gold-light);
+}
+
+.lieux-links a:hover::after,
+.lieux-links a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 90px;
+  padding: 10px 15px;
+
+  border: 1px solid var(--border);
+
+  color: var(--text-soft);
+
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.nav-back:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(201, 168, 106, 0.05);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.lieux-hero {
+  position: relative;
+  z-index: 1;
+
+  min-height: 730px;
+
+  padding: 115px 30px 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 28px;
+
+  color: var(--gold);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+}
+
+.hero-label span {
+  width: 50px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold)
+  );
+}
+
+.hero-label span:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--gold),
+    transparent
+  );
+}
+
+.lieux-hero h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(72px, 11vw, 160px);
+  font-weight: 500;
+  line-height: 0.8;
+
+  letter-spacing: -0.045em;
+
+  color: var(--text);
+}
+
+.lieux-hero h1 strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.lieux-hero > p {
+  max-width: 550px;
+  margin-top: 35px;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+  line-height: 1.8;
+
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   HERO CITY
+========================================================= */
+
+.hero-decoration {
+  width: min(700px, 90%);
+  height: 190px;
+
+  margin-top: 65px;
+
+  position: relative;
+
+  border-bottom: 1px solid var(--border);
+
+  overflow: hidden;
+}
+
+.hero-city {
+  position: absolute;
+  inset: auto 0 0;
+
+  height: 150px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+
+  opacity: 0.85;
+}
+
+.city-house {
+  position: relative;
+
+  display: block;
+
+  width: 70px;
+  height: 68px;
+
+  border: 1px solid rgba(201, 168, 106, 0.28);
+  border-bottom: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 168, 106, 0.09),
+      rgba(201, 168, 106, 0.015)
+    );
+}
+
+.city-house::before {
+  content: "";
+
+  position: absolute;
+  top: -24px;
+  left: -1px;
+
+  width: 0;
+  height: 0;
+
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 24px solid rgba(201, 168, 106, 0.18);
+}
+
+.city-house.c1 {
+  height: 52px;
+}
+
+.city-house.c2 {
+  height: 82px;
+}
+
+.city-house.c3 {
+  height: 63px;
+}
+
+.city-house.c4 {
+  height: 92px;
+}
+
+.city-minaret {
+  position: relative;
+
+  width: 36px;
+  height: 122px;
+
+  margin-bottom: 0;
+
+  border: 1px solid rgba(201, 168, 106, 0.3);
+  border-bottom: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(201, 168, 106, 0.12),
+    rgba(201, 168, 106, 0.025)
+  );
+}
+
+.city-minaret::before {
+  content: "";
+
+  position: absolute;
+  left: -6px;
+  top: -12px;
+
+  width: 46px;
+  height: 12px;
+
+  border: 1px solid rgba(201, 168, 106, 0.3);
+}
+
+.city-minaret::after {
+  content: "";
+
+  position: absolute;
+  left: 8px;
+  bottom: 20px;
+
+  width: 18px;
+  height: 36px;
+
+  border: 1px solid rgba(201, 168, 106, 0.18);
+}
+
+.city-dome {
+  width: 70px;
+  height: 48px;
+
+  margin-bottom: 0;
+
+  border-radius: 70px 70px 0 0;
+
+  border: 1px solid rgba(201, 168, 106, 0.3);
+  border-bottom: none;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(201, 168, 106, 0.18),
+    transparent 68%
+  );
+}
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 27px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.scroll-indicator span {
+  color: var(--text-muted);
+
+  font-size: 8px;
+  letter-spacing: 0.3em;
+}
+
+.scroll-indicator i {
+  display: block;
+
+  width: 1px;
+  height: 42px;
+
+  background: linear-gradient(
+    to bottom,
+    var(--gold),
+    transparent
+  );
+
+  animation: scrollLine 2s infinite ease-in-out;
+}
+
+@keyframes scrollLine {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.6);
+    transform-origin: top;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.lieux-intro {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 60px));
+  margin: 0 auto;
+
+  padding: 125px 0;
+
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 80px;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.intro-number {
+  align-self: start;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 125px;
+  line-height: 0.8;
+
+  color: transparent;
+
+  -webkit-text-stroke: 1px rgba(201, 168, 106, 0.28);
+
+  user-select: none;
+}
+
+.intro-content {
+  max-width: 740px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--gold);
+
+  font-size: 9px;
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.intro-content h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(46px, 6vw, 80px);
+  font-weight: 500;
+  line-height: 0.92;
+
+  letter-spacing: -0.025em;
+}
+
+.intro-content h2 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.intro-content p {
+  max-width: 710px;
+
+  margin-top: 35px;
+
+  color: var(--text-soft);
+
+  font-size: 15px;
+  line-height: 2;
+}
+
+.intro-content p i {
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+}
+
+/* =========================================================
+   PLACES SECTION
+========================================================= */
+
+.places-section {
+  position: relative;
+  z-index: 1;
+
+  width: min(1280px, calc(100% - 60px));
+  margin: 0 auto;
+
+  padding: 130px 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+
+  margin-bottom: 70px;
+}
+
+.section-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(45px, 6vw, 74px);
+  font-weight: 500;
+  line-height: 0.9;
+
+  letter-spacing: -0.025em;
+}
+
+.section-count {
+  padding-bottom: 7px;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.section-heading.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* =========================================================
+   PLACES LIST
+========================================================= */
+
+.places-list {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.place-card {
+  position: relative;
+
+  min-height: 390px;
+
+  display: grid;
+  grid-template-columns: 72px minmax(320px, 0.95fr) minmax(340px, 1.05fr);
+  align-items: stretch;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 168, 106, 0.055),
+      rgba(0, 0, 0, 0.08)
+    );
+
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.place-card:hover {
+  transform: translateY(-5px);
+
+  border-color: var(--border-strong);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 168, 106, 0.09),
+      rgba(0, 0, 0, 0.09)
+    );
+}
+
+.place-card.reverse {
+  grid-template-columns:
+    72px minmax(340px, 1.05fr) minmax(320px, 0.95fr);
+}
+
+.place-card.reverse .place-visual {
+  order: 3;
+}
+
+.place-card.reverse .place-info {
+  order: 2;
+}
+
+.place-card.reverse .place-number {
+  order: 1;
+}
+
+/* NUMBER */
+
+.place-number {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  border-right: 1px solid var(--border);
+
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+}
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.place-visual {
+  position: relative;
+
+  min-height: 390px;
+
+  overflow: hidden;
+
+  border-right: 1px solid var(--border);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(201, 168, 106, 0.1),
+      transparent 55%
+    ),
+    #0d0c09;
+}
+
+.place-card.reverse .place-visual {
+  border-right: 0;
+  border-left: 1px solid var(--border);
+}
+
+.visual-corners {
+  position: absolute;
+  inset: 20px;
+
+  pointer-events: none;
+}
+
+.visual-corners span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.visual-corners span:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-top: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
+}
+
+.visual-corners span:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-top: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+}
+
+.visual-corners span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid var(--gold);
+  border-left: 1px solid var(--gold);
+}
+
+.visual-corners span:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid var(--gold);
+  border-right: 1px solid var(--gold);
+}
+
+.visual-label {
+  position: absolute;
+  left: 28px;
+  bottom: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visual-label span {
+  color: var(--text-muted);
+
+  font-size: 8px;
+  letter-spacing: 0.24em;
+}
+
+.visual-label b {
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   ARCHITECTURE CONTAINER
+========================================================= */
+
+.architecture {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+}
+
+.architecture-glow {
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+
+  background: rgba(201, 168, 106, 0.12);
+
+  filter: blur(45px);
+}
+
+/* =========================================================
+   HOUSE
+========================================================= */
+
+.house-art {
+  position: relative;
+
+  width: 200px;
+  height: 240px;
+}
+
+.house-roof {
+  position: absolute;
+  left: 20px;
+  top: 0;
+
+  width: 160px;
+  height: 70px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 168, 106, 0.18),
+      rgba(201, 168, 106, 0.04)
+    );
+
+  border: 1px solid rgba(201, 168, 106, 0.45);
+
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.house-body {
+  position: absolute;
+
+  left: 35px;
+  bottom: 25px;
+
+  width: 130px;
+  height: 150px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(201, 168, 106, 0.08),
+      transparent
+    );
+}
+
+.house-window,
+.house-door,
+.house-balcony {
+  position: absolute;
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+}
+
+.house-window {
+  width: 21px;
+  height: 30px;
+  top: 25px;
+}
+
+.w1 {
+  left: 20px;
+}
+
+.w2 {
+  left: 54px;
+}
+
+.w3 {
+  left: 88px;
+}
+
+.w4 {
+  left: 54px;
+  top: 73px;
+}
+
+.house-door {
+  width: 27px;
+  height: 48px;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.house-balcony {
+  left: 20px;
+  right: 20px;
+  bottom: 62px;
+  height: 2px;
+
+  background: var(--gold);
+}
+
+/* =========================================================
+   MSID
+========================================================= */
+
+.msid-art {
+  position: relative;
+
+  width: 220px;
+  height: 210px;
+}
+
+.msid-roof {
+  position: absolute;
+  top: 0;
+  left: 20px;
+
+  width: 180px;
+  height: 40px;
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  background: rgba(201, 168, 106, 0.06);
+
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.msid-building {
+  position: absolute;
+  bottom: 10px;
+  left: 28px;
+
+  width: 164px;
+  height: 150px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+}
+
+.msid-arch {
+  position: absolute;
+
+  width: 48px;
+  height: 62px;
+
+  left: 29px;
+  bottom: 34px;
+
+  border: 1px solid rgba(201, 168, 106, 0.45);
+  border-radius: 48px 48px 0 0;
+}
+
+.msid-arch.small {
+  left: 90px;
+  width: 43px;
+}
+
+.msid-door {
+  position: absolute;
+
+  width: 34px;
+  height: 52px;
+
+  left: 65px;
+  bottom: 0;
+
+  border: 1px solid rgba(201, 168, 106, 0.5);
+
+  border-radius: 32px 32px 0 0;
+}
+
+.msid-window {
+  position: absolute;
+
+  width: 15px;
+  height: 19px;
+
+  top: 22px;
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.mw1 {
+  left: 33px;
+}
+
+.mw2 {
+  right: 33px;
+}
+
+/* =========================================================
+   MEDINA
+========================================================= */
+
+.medina-art {
+  position: relative;
+
+  width: 250px;
+  height: 220px;
+}
+
+.medina-ground {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 22px;
+
+  height: 2px;
+
+  background: rgba(201, 168, 106, 0.35);
+}
+
+.medina-skyline {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 24px;
+
+  height: 140px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.medina-skyline span {
+  flex: 1;
+
+  border: 1px solid rgba(201, 168, 106, 0.25);
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(201, 168, 106, 0.1),
+      transparent
+    );
+}
+
+.medina-skyline span:nth-child(1) {
+  height: 50%;
+}
+
+.medina-skyline span:nth-child(2) {
+  height: 68%;
+}
+
+.medina-skyline span:nth-child(3) {
+  height: 54%;
+}
+
+.medina-skyline span:nth-child(4) {
+  height: 84%;
+}
+
+.medina-skyline span:nth-child(5) {
+  height: 62%;
+}
+
+.medina-skyline span:nth-child(6) {
+  height: 73%;
+}
+
+.medina-skyline span:nth-child(7) {
+  height: 46%;
+}
+
+.medina-gate {
+  position: absolute;
+
+  left: 50%;
+  bottom: 24px;
+
+  width: 48px;
+  height: 74px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.5);
+
+  border-radius: 48px 48px 0 0;
+
+  background: rgba(201, 168, 106, 0.07);
+}
+
+.medina-gate span {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 18px;
+  height: 34px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+
+  border-radius: 18px 18px 0 0;
+}
+
+/* =========================================================
+   DERB
+========================================================= */
+
+.derb-art {
+  position: relative;
+
+  width: 230px;
+  height: 240px;
+
+  perspective: 700px;
+}
+
+.derb-wall {
+  position: absolute;
+  bottom: 30px;
+
+  width: 100px;
+  height: 170px;
+
+  border: 1px solid rgba(201, 168, 106, 0.3);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(201, 168, 106, 0.12),
+      transparent
+    );
+}
+
+.derb-wall.left {
+  left: 3px;
+  transform: skewY(-7deg);
+}
+
+.derb-wall.right {
+  right: 3px;
+  transform: skewY(7deg);
+}
+
+.derb-arch {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+
+  width: 105px;
+  height: 155px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.5);
+
+  border-radius: 52px 52px 0 0;
+
+  background: rgba(201, 168, 106, 0.06);
+}
+
+.derb-arch span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  width: 48px;
+  height: 76px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.3);
+
+  border-radius: 48px 48px 0 0;
+}
+
+.derb-floor {
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+  right: 15px;
+
+  height: 1px;
+
+  background: var(--gold);
+}
+
+/* =========================================================
+   SOUK
+========================================================= */
+
+.souk-art {
+  position: relative;
+
+  width: 250px;
+  height: 210px;
+}
+
+.souk-roof {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  right: 16px;
+
+  height: 48px;
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  border-radius: 120px 120px 0 0;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(201, 168, 106, 0.08) 0 10px,
+      transparent 10px 18px
+    );
+}
+
+.souk-shop {
+  position: absolute;
+
+  bottom: 20px;
+
+  width: 66px;
+  height: 98px;
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.shop1 {
+  left: 8px;
+}
+
+.shop2 {
+  left: 92px;
+}
+
+.shop3 {
+  right: 8px;
+}
+
+.souk-shop span {
+  position: absolute;
+
+  top: 14px;
+  left: 50%;
+
+  width: 38px;
+  height: 42px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  border-radius: 50% 50% 0 0;
+}
+
+.souk-shop b {
+  position: absolute;
+
+  left: 50%;
+  bottom: 14px;
+
+  width: 44px;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  background: rgba(201, 168, 106, 0.25);
+}
+
+/* =========================================================
+   KISSARIA
+========================================================= */
+
+.kissaria-art {
+  position: relative;
+
+  width: 210px;
+  height: 220px;
+}
+
+.kissaria-arch {
+  position: absolute;
+
+  left: 50%;
+  bottom: 35px;
+
+  width: 150px;
+  height: 150px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.5);
+
+  border-radius: 75px 75px 0 0;
+}
+
+.kissaria-inner {
+  position: absolute;
+
+  left: 19px;
+  right: 19px;
+  top: 19px;
+  bottom: 0;
+
+  border: 1px solid rgba(201, 168, 106, 0.22);
+
+  border-radius: 56px 56px 0 0;
+}
+
+.kissaria-floor {
+  position: absolute;
+
+  left: 10px;
+  right: 10px;
+  bottom: 35px;
+
+  height: 1px;
+
+  background: var(--gold);
+}
+
+.kissaria-lamp {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 34px;
+  height: 34px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.45);
+
+  border-radius: 50%;
+}
+
+.kissaria-lamp::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -55px;
+
+  width: 1px;
+  height: 55px;
+
+  background: rgba(201, 168, 106, 0.3);
+}
+
+/* =========================================================
+   HAMMAM
+========================================================= */
+
+.hammam-art {
+  position: relative;
+
+  width: 220px;
+  height: 230px;
+}
+
+.hammam-building {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  width: 145px;
+  height: 125px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.hammam-door {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 30px;
+  height: 56px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  border-radius: 30px 30px 0 0;
+}
+
+.hammam-window {
+  position: absolute;
+
+  top: 25px;
+
+  width: 26px;
+  height: 34px;
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.hw1 {
+  left: 18px;
+}
+
+.hw2 {
+  right: 18px;
+}
+
+.hammam-dome {
+  position: absolute;
+
+  left: 50%;
+  top: 10px;
+
+  width: 90px;
+  height: 62px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.38);
+
+  border-radius: 90px 90px 0 0;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(201, 168, 106, 0.13),
+    transparent 70%
+  );
+}
+
+.steam {
+  position: absolute;
+
+  width: 22px;
+  height: 70px;
+
+  border-left: 1px solid rgba(201, 168, 106, 0.16);
+
+  border-radius: 50%;
+
+  filter: blur(0.4px);
+
+  animation: steamFloat 4s infinite ease-in-out;
+}
+
+.steam1 {
+  left: 42px;
+  top: 0;
+}
+
+.steam2 {
+  left: 96px;
+  top: -8px;
+  animation-delay: 0.8s;
+}
+
+.steam3 {
+  right: 42px;
+  top: 0;
+  animation-delay: 1.5s;
+}
+
+@keyframes steamFloat {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(8px);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateY(-7px);
+  }
+}
+
+/* =========================================================
+   FOUR
+========================================================= */
+
+.four-art {
+  position: relative;
+
+  width: 200px;
+  height: 220px;
+}
+
+.four-body {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  width: 125px;
+  height: 125px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(201, 168, 106, 0.08),
+      rgba(201, 168, 106, 0.02)
+    );
+}
+
+.four-opening {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 62px;
+  height: 65px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  border-radius: 62px 62px 0 0;
+}
+
+.four-glow {
+  position: absolute;
+
+  left: 50%;
+  bottom: 15px;
+
+  width: 30px;
+  height: 25px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(220, 160, 60, 0.2);
+
+  filter: blur(8px);
+}
+
+.four-chimney {
+  position: absolute;
+
+  left: 50%;
+  top: 3px;
+
+  width: 26px;
+  height: 70px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.four-smoke {
+  position: absolute;
+
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid rgba(201, 168, 106, 0.18);
+
+  border-radius: 50%;
+
+  animation: smokeMove 4s infinite ease-in-out;
+}
+
+.s1 {
+  left: 67px;
+  top: -8px;
+}
+
+.s2 {
+  right: 67px;
+  top: -24px;
+  animation-delay: 1s;
+}
+
+@keyframes smokeMove {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translateY(8px) scale(0.85);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(-8px) scale(1);
+  }
+}
+
+/* =========================================================
+   SANCTUARY
+========================================================= */
+
+.sanctuary-art {
+  position: relative;
+
+  width: 200px;
+  height: 225px;
+}
+
+.sanctuary-body {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  width: 130px;
+  height: 125px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.sanctuary-door {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 30px;
+  height: 55px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.38);
+
+  border-radius: 30px 30px 0 0;
+}
+
+.sanctuary-dome {
+  position: absolute;
+
+  left: 50%;
+  top: 22px;
+
+  width: 92px;
+  height: 62px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  border-radius: 90px 90px 0 0;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(201, 168, 106, 0.13),
+    transparent 70%
+  );
+}
+
+.sanctuary-crescent {
+  position: absolute;
+
+  left: 50%;
+  top: -6px;
+
+  transform: translateX(-50%);
+
+  color: var(--gold-light);
+
+  font-size: 30px;
+}
+
+/* =========================================================
+   AICHA
+========================================================= */
+
+.aicha-art {
+  position: relative;
+
+  width: 205px;
+  height: 220px;
+}
+
+.aicha-roof {
+  position: absolute;
+
+  top: 8px;
+  left: 20px;
+
+  width: 165px;
+  height: 62px;
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+
+  background: rgba(201, 168, 106, 0.07);
+}
+
+.aicha-house {
+  position: absolute;
+
+  bottom: 28px;
+  left: 35px;
+
+  width: 135px;
+  height: 138px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.aicha-window {
+  position: absolute;
+
+  top: 25px;
+
+  width: 22px;
+  height: 30px;
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.aw1 {
+  left: 22px;
+}
+
+.aw2 {
+  right: 22px;
+}
+
+.aicha-door {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 29px;
+  height: 50px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  border-radius: 29px 29px 0 0;
+}
+
+/* =========================================================
+   WORKSHOP
+========================================================= */
+
+.workshop-art {
+  position: relative;
+
+  width: 230px;
+  height: 220px;
+}
+
+.workshop-building {
+  position: absolute;
+
+  left: 34px;
+  bottom: 30px;
+
+  width: 155px;
+  height: 120px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.workshop-window {
+  position: absolute;
+
+  left: 22px;
+  top: 22px;
+
+  width: 36px;
+  height: 28px;
+
+  border: 1px solid rgba(201, 168, 106, 0.35);
+}
+
+.workshop-door {
+  position: absolute;
+
+  right: 23px;
+  bottom: 0;
+
+  width: 30px;
+  height: 58px;
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  border-radius: 30px 30px 0 0;
+}
+
+.workshop-tool {
+  position: absolute;
+}
+
+.hammer {
+  width: 55px;
+  height: 15px;
+
+  right: 8px;
+  top: 55px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  transform: rotate(-25deg);
+}
+
+.hammer i {
+  position: absolute;
+
+  right: -20px;
+  top: 2px;
+
+  width: 26px;
+  height: 9px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+}
+
+.anvil {
+  left: 15px;
+  top: 115px;
+
+  width: 54px;
+  height: 23px;
+
+  border: 1px solid rgba(201, 168, 106, 0.45);
+}
+
+/* =========================================================
+   MOSQUE
+========================================================= */
+
+.mosque-art {
+  position: relative;
+
+  width: 230px;
+  height: 235px;
+}
+
+.mosque-main {
+  position: absolute;
+
+  left: 25px;
+  bottom: 25px;
+
+  width: 145px;
+  height: 115px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.mosque-door {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 31px;
+  height: 54px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.4);
+
+  border-radius: 31px 31px 0 0;
+}
+
+.mosque-dome {
+  position: absolute;
+
+  left: 50%;
+  top: -54px;
+
+  width: 82px;
+  height: 58px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  border-radius: 82px 82px 0 0;
+}
+
+.mosque-minaret {
+  position: absolute;
+
+  right: 25px;
+  bottom: 25px;
+
+  width: 38px;
+  height: 185px;
+
+  border: 1px solid rgba(201, 168, 106, 0.42);
+
+  background: rgba(201, 168, 106, 0.05);
+}
+
+.minaret-top {
+  position: absolute;
+
+  left: -6px;
+  top: -11px;
+
+  width: 48px;
+  height: 12px;
+
+  border: 1px solid rgba(201, 168, 106, 0.45);
+}
+
+.minaret-window {
+  position: absolute;
+
+  top: 45px;
+  left: 10px;
+
+  width: 16px;
+  height: 22px;
+
+  border: 1px solid rgba(201, 168, 106, 0.3);
+}
+
+.mosque-crescent {
+  position: absolute;
+
+  right: 18px;
+  top: -4px;
+
+  color: var(--gold-light);
+
+  font-size: 28px;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map-section {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 60px));
+  margin: 0 auto;
+
+  padding: 125px 0;
+}
+
+.map-header {
+  max-width: 650px;
+  margin-bottom: 55px;
+}
+
+.map-header h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(48px, 6vw, 76px);
+  font-weight: 500;
+  line-height: 0.95;
+
+  letter-spacing: -0.025em;
+}
+
+.map-header p {
+  max-width: 600px;
+  margin-top: 25px;
+
+  color: var(--text-muted);
+
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.map {
+  position: relative;
+
+  width: 100%;
+  height: 500px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(201, 168, 106, 0.08),
+      transparent 48%
+    ),
+    #0c0b09;
+}
+
+.map::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.12;
+
+  background-image:
+    linear-gradient(
+      rgba(201, 168, 106, 0.25) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(201, 168, 106, 0.25) 1px,
+      transparent 1px
+    );
+
+  background-size: 44px 44px;
+}
+
+.map-road {
+  position: absolute;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 168, 106, 0.34),
+    transparent
+  );
+
+  transform-origin: left center;
+}
+
+.road1 {
+  width: 88%;
+  left: 6%;
+  top: 28%;
+  transform: rotate(9deg);
+}
+
+.road2 {
+  width: 80%;
+  left: 10%;
+  top: 67%;
+  transform: rotate(-7deg);
+}
+
+.road3 {
+  width: 78%;
+  left: 14%;
+  top: 47%;
+  transform: rotate(34deg);
+}
+
+.road4 {
+  width: 78%;
+  left: 12%;
+  top: 52%;
+  transform: rotate(-29deg);
+}
+
+.map-building {
+  position: absolute;
+
+  border: 1px solid rgba(201, 168, 106, 0.2);
+
+  background: rgba(201, 168, 106, 0.045);
+}
+
+.b1 {
+  width: 120px;
+  height: 82px;
+  left: 8%;
+  top: 14%;
+}
+
+.b2 {
+  width: 95px;
+  height: 115px;
+  left: 28%;
+  top: 9%;
+}
+
+.b3 {
+  width: 160px;
+  height: 75px;
+  right: 8%;
+  top: 17%;
+}
+
+.b4 {
+  width: 120px;
+  height: 95px;
+  left: 10%;
+  bottom: 12%;
+}
+
+.b5 {
+  width: 95px;
+  height: 115px;
+  left: 41%;
+  bottom: 7%;
+}
+
+.b6 {
+  width: 145px;
+  height: 85px;
+  right: 9%;
+  bottom: 17%;
+}
+
+.map-center {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 145px;
+  height: 145px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-strong);
+
+  border-radius: 50%;
+
+  background: rgba(11, 10, 8, 0.82);
+
+  box-shadow:
+    0 0 0 14px rgba(201, 168, 106, 0.025),
+    0 0 45px rgba(201, 168, 106, 0.08);
+}
+
+.map-center span {
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+}
+
+.map-center b {
+  margin-top: 5px;
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 0.3em;
+}
+
+.map-point {
+  position: absolute;
+
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--gold);
+
+  border-radius: 50%;
+
+  color: var(--gold-light);
+
+  font-size: 8px;
+
+  background: var(--bg);
+
+  box-shadow: 0 0 0 6px rgba(201, 168, 106, 0.05);
+
+  animation: mapPulse 3s infinite ease-in-out;
+}
+
+.p1 {
+  left: 16%;
+  top: 24%;
+}
+
+.p2 {
+  left: 35%;
+  top: 17%;
+  animation-delay: 0.3s;
+}
+
+.p3 {
+  right: 24%;
+  top: 23%;
+  animation-delay: 0.6s;
+}
+
+.p4 {
+  left: 17%;
+  bottom: 25%;
+  animation-delay: 0.9s;
+}
+
+.p5 {
+  left: 35%;
+  bottom: 18%;
+  animation-delay: 1.2s;
+}
+
+.p6 {
+  right: 21%;
+  bottom: 27%;
+  animation-delay: 1.5s;
+}
+
+@keyframes mapPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 6px rgba(201, 168, 106, 0.04),
+      0 0 0 rgba(201, 168, 106, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 9px rgba(201, 168, 106, 0.06),
+      0 0 16px rgba(201, 168, 106, 0.12);
+  }
+}
+
+/* =========================================================
+   SYMBOLISM
+========================================================= */
+
+.symbolism-section {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 60px));
+  margin: 0 auto;
+
+  padding: 125px 0;
+}
+
+.symbolism-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+
+  margin-top: 60px;
+}
+
+.symbol-card {
+  position: relative;
+
+  min-height: 290px;
+
+  padding: 30px;
+
+  border: 1px solid var(--border);
+
+  background: rgba(201, 168, 106, 0.025);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.symbol-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--border-strong);
+
+  background: rgba(201, 168, 106, 0.06);
+}
+
+.symbol-icon {
+  display: block;
+
+  margin-bottom: 70px;
+
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+}
+
+.symbol-card h3 {
+  margin-bottom: 14px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 31px;
+  font-weight: 500;
+}
+
+.symbol-card p {
+  color: var(--text-muted);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.lieux-footer {
+  position: relative;
+  z-index: 1;
+
+  width: min(1200px, calc(100% - 60px));
+  margin: 0 auto;
+
+  padding: 50px 0 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-line {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  height: 1px;
+
+  background: var(--border);
+}
+
+.lieux-footer > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lieux-footer > div span {
+  color: var(--text-muted);
+
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+
+.lieux-footer > div strong {
+  color: var(--gold);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.lieux-footer > a {
+  color: var(--text-soft);
+
+  font-size: 10px;
+  letter-spacing: 0.08em;
+
+  transition: color 0.25s ease;
+}
+
+.lieux-footer > a:hover {
+  color: var(--gold-light);
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .lieux-nav {
+    width: min(100% - 40px, 1200px);
+
+    flex-wrap: wrap;
+
+    padding: 18px 0;
+  }
+
+  .lieux-links {
+    order: 3;
+
+    width: 100%;
+    justify-content: flex-start;
+
+    padding-bottom: 5px;
+
+    overflow-x: auto;
+    flex-wrap: nowrap;
+
+    scrollbar-width: none;
+  }
+
+  .lieux-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .place-card,
+  .place-card.reverse {
+    grid-template-columns: 62px 1fr 1fr;
+  }
+
+  .symbolism-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+  .lieux-page {
+    overflow-x: hidden;
+  }
+
+  .lieux-nav {
+    width: calc(100% - 28px);
+
+    min-height: auto;
+
+    padding: 18px 0;
+
+    gap: 16px;
+  }
+
+  .lieux-logo {
+    font-size: 19px;
+  }
+
+  .lieux-logo .logo-mark {
+    width: 34px;
+    height: 34px;
+
+    font-size: 20px;
+  }
+
+  .nav-back {
+    min-width: auto;
+    padding: 9px 11px;
+
+    font-size: 8px;
+  }
+
+  .lieux-links {
+    width: calc(100vw - 28px);
+
+    gap: 2px;
+
+    padding-bottom: 2px;
+  }
+
+  .lieux-links a {
+    padding: 9px 8px;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+  }
+
+  .lieux-hero {
+    min-height: 600px;
+
+    padding: 85px 20px 70px;
+  }
+
+  .hero-label {
+    gap: 9px;
+
+    font-size: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-label span {
+    width: 26px;
+  }
+
+  .lieux-hero h1 {
+    font-size: clamp(60px, 18vw, 100px);
+    line-height: 0.83;
+  }
+
+  .lieux-hero > p {
+    max-width: 320px;
+
+    margin-top: 25px;
+
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .hero-decoration {
+    width: 100%;
+    height: 145px;
+
+    margin-top: 48px;
+  }
+
+  .hero-city {
+    height: 110px;
+  }
+
+  .city-house {
+    width: 40px;
+  }
+
+  .city-house::before {
+    top: -15px;
+
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-bottom-width: 15px;
+  }
+
+  .city-minaret {
+    width: 24px;
+    height: 91px;
+  }
+
+  .city-minaret::before {
+    left: -3px;
+    width: 30px;
+    height: 8px;
+  }
+
+  .city-dome {
+    width: 44px;
+    height: 30px;
+  }
+
+  .scroll-indicator {
+    bottom: 18px;
+  }
+
+  .lieux-intro {
+    width: calc(100% - 30px);
+
+    padding: 85px 0;
+
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .intro-number {
+    font-size: 90px;
+  }
+
+  .intro-content h2 {
+    font-size: 49px;
+  }
+
+  .intro-content p {
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    line-height: 1.85;
+  }
+
+  .places-section,
+  .map-section,
+  .symbolism-section {
+    width: calc(100% - 30px);
+
+    padding: 85px 0;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+
+    margin-bottom: 40px;
+    gap: 17px;
+  }
+
+  .section-heading h2 {
+    font-size: 50px;
+  }
+
+  .section-count {
+    padding-bottom: 0;
+  }
+
+  .section-heading.centered {
+    align-items: center;
+    text-align: center;
+  }
+
+  .place-card,
+  .place-card.reverse {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .place-card.reverse .place-visual,
+  .place-card.reverse .place-info,
+  .place-card.reverse .place-number {
+    order: initial;
+  }
+
+  .place-number {
+    writing-mode: horizontal-tb;
+    transform: none;
+
+    min-height: 49px;
+
+    justify-content: flex-start;
+
+    padding: 0 19px;
+
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+
+    font-size: 12px;
+  }
+
+  .place-visual,
+  .place-card.reverse .place-visual {
+    min-height: 300px;
+
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .place-info {
+    padding: 28px 22px 24px;
+  }
+
+  .place-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .place-info h3 {
+    margin-top: 12px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 0.95;
+  }
+
+  .place-info p {
+    margin-top: 18px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .place-bottom {
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: var(--text-muted);
+
+    font-size: 7px;
+    letter-spacing: 0.18em;
+  }
+
+  .map-header h2 {
+    font-size: 49px;
+  }
+
+  .map-header p {
+    font-size: 12px;
+  }
+
+  .map {
+    height: 370px;
+  }
+
+  .map-center {
+    width: 115px;
+    height: 115px;
+  }
+
+  .map-center span {
+    font-size: 20px;
+  }
+
+  .map-point {
+    width: 28px;
+    height: 28px;
+
+    font-size: 7px;
+  }
+
+  .b1,
+  .b2,
+  .b3,
+  .b4,
+  .b5,
+  .b6 {
+    transform: scale(0.7);
+  }
+
+  .symbolism-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .symbol-card {
+    min-height: 240px;
+
+    padding: 25px;
+  }
+
+  .symbol-icon {
+    margin-bottom: 52px;
+  }
+
+  .symbol-card h3 {
+    font-size: 28px;
+  }
+
+  .lieux-footer {
+    width: calc(100% - 30px);
+
+    padding: 35px 0 25px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 430px) {
+  .lieux-logo small {
+    font-size: 7px;
+  }
+
+  .lieux-hero {
+    min-height: 560px;
+  }
+
+  .lieux-hero h1 {
+    font-size: 59px;
+  }
+
+  .hero-decoration {
+    margin-top: 38px;
+  }
+
+  .intro-content h2 {
+    font-size: 43px;
+  }
+
+  .section-heading h2 {
+    font-size: 44px;
+  }
+
+  .place-info h3 {
+    font-size: 34px;
+  }
+
+  .place-visual,
+  .place-card.reverse .place-visual {
+    min-height: 270px;
+  }
+
+  .house-art,
+  .msid-art,
+  .medina-art,
+  .derb-art,
+  .souk-art,
+  .kissaria-art,
+  .hammam-art,
+  .four-art,
+  .sanctuary-art,
+  .aicha-art,
+  .workshop-art,
+  .mosque-art {
+    transform: scale(0.85);
+  }
+
+  .map {
+    height: 330px;
+  }
+
+  .map-point {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .lieux-page *,
+  .lieux-page *::before,
+  .lieux-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
