@@ -12,7 +12,7 @@ const menuItems = [
   { label: "Lieux", href: "/lieux" },
   { label: "Résumé", href: "/resume" },
   { label: "Paratexte", href: "/paratexte" },
-  { label: "Fiche de lecture", href: "/fiche-de-lecture" },
+  { label: "Fiche de lecture", href: "/fiche-lecture" },
 
   // AJOUT : Test diagnostique
   { label: "Test diagnostique", href: "/test-diagnostique" },
@@ -426,7 +426,7 @@ export default function Home() {
           </p>
 
           <Link
-            href="/fiche-de-lecture"
+            href="/fiche-lecture"
             className="primary-button"
           >
             Voir la fiche complète
